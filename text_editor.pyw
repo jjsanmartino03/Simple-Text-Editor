@@ -51,6 +51,7 @@ class App(tk.Tk):
         self.framie.bind_all("<Alt-c>", self.call_destroy)
         self.text_box.bind("<Key>", self.change)  # to see if the file is saved or not
         self.text_box.bind("<Control-Shift_L>", self.control_shift)
+        self.protocol("WM_DELETE_WINDOW", lambda: self.closing_handler(True))
         self.open_last()
 
     # Functionality
@@ -218,5 +219,4 @@ class App(tk.Tk):
 
 if __name__ == '__main__':
     app = App()
-    app.protocol("WM_DELETE_WINDOW", lambda: app.closing_handler(True))
     app.mainloop()
