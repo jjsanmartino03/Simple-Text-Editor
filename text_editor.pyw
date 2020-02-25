@@ -189,12 +189,11 @@ class App(tk.Tk):
 
     # the method that makes possible to the user to see if the file is saved or not
     def change(self, event):
-        global key_codes
-        print(event)
+        global key_codes, file_directory
         if "※" not in self.titly.get():
             if (event.keycode not in key_codes) and (event.state < 20) and (event.state not in [12, 4]):  # This conditional makes sure that the pressed button is a word, tab or backspace before saying that the file is modified.
                 self.titly.set(f"{self.titly.get()} ※")
-                self.title(f"{file_directory}※ - Pocket Note Editor")
+                self.title(f"{self.title().split()[0]}※ - Pocket Note Editor")
 
     # the method to ask if the user wants to save before closing the GUI or the file
     def closing_handler(self, b):  # If b=True it means that the user wants to close the GUI, if b=False it means that the user wants to close a file
@@ -211,7 +210,7 @@ class App(tk.Tk):
                 self.save_it()
                 if b:
                     self.destroy()
-            elif b:
+            elif b and not wants_to==None:
                 self.destroy()
             if wants_to is None:  # If the users pressed cancel...
                 return True
