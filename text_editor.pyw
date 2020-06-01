@@ -19,7 +19,6 @@ class App(tk.Tk):
         file_name = None
         # GUI configuration-----------------------
         super().__init__()  # It inherits for tk.tk()
-        self.iconbitmap("notes.ico")
         self.titly = tk.StringVar()  # declaring the variable of the title, the name of the differents files
         self.file_title = tk.Label(self, pady=15, textvariable=self.titly, font=("Comic Sans MS", 20))
         self.file_title.pack()
